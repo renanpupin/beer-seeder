@@ -1,4 +1,4 @@
-![Beer Seeder](beer_seeder.png?raw=true =450x)
+![Beer Seeder](beer_seeder.png?raw=true | width=400)
 
 A React and Node.js best practices seeder for beer lovers.
 
