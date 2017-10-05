@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 
 //configs
-import config from './config.json';
+import config from './env';
 
 //uses
 import initializeDb from './db';
@@ -19,13 +19,10 @@ app.server = http.createServer(app);
 app.use(morgan('dev'));
 
 
-app.use(bodyParser.json({
-	limit : config.bodyLimit
-}));
+app.use(bodyParser.json());
 
 // connect to db
 initializeDb( db => {
-
 	// internal middleware
 	app.use(middleware({ config, db }));
 
@@ -33,7 +30,7 @@ initializeDb( db => {
 	app.use('/api', api({ config, db }));
 
 	app.server.listen(process.env.PORT || config.port, () => {
-		console.log(`Started on port ${app.server.address().port}`);
+		console.log(`Started on port ${config.port}`);
 	});
 });
 

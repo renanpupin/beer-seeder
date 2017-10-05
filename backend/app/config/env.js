@@ -5,7 +5,7 @@ const config = {
   env: env.NODE_ENV,
   port: env.PORT,
   jwtSecret: env.JWT_SECRET,
-  mongo: env.MONGODB_URL
+  mongoUrl: env.MONGODB_URL
 };
 
 export default config;
