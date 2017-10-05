@@ -1,12 +1,12 @@
-![Beer Seeder](beer_seeder.png?raw=true)
+![Beer Seeder](beer_seeder.png?raw=true =450x)
 
 A React and Node.js best practices seeder for beer lovers.
 
 # Frontend
-[docs](https://github.com/renanpupin/beer-seeder/tree/master/frontend)
+[View Docs](https://github.com/renanpupin/beer-seeder/tree/master/frontend)
 
 # Backend
-[docs](https://github.com/renanpupin/beer-seeder/tree/master/backend)
+[View Docs](https://github.com/renanpupin/beer-seeder/tree/master/backend)
 
 ## Installation
 
