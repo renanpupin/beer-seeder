@@ -1,12 +1,13 @@
-import express from 'express';
-import expressJwt from 'express-jwt';
-import authCtrl from '../controllers/auth';
-import config from '../../config/config';
-
+const express = require('express');
 const router = express.Router();
 
-/** POST /api/auth/login - Returns token if correct username and password is provided */
-router.route('/login')
-	.post(authCtrl.login);
+const authCtrl = require('../controllers/auth');
 
-export default router;
+router
+	.post('/register', authCtrl.register)
+	.post('/login', authCtrl.login);
+
+module.exports = router;
+
+// TODO: implement inversion of control
+// https://medium.com/@osuissa/node-js-express-refatorando-suas-rotas-9e322273feb

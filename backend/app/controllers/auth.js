@@ -1,28 +1,48 @@
-import jwt from 'jsonwebtoken';
-import config from '../../config/env';
+const mongooseUtils = require("../utils/mongoose");
 
-//sample user
-const user = {
-    email: 'admin',
-    password: '123456'
-};
+const UserSchema = require("../models/user");
 
-function login(req, res, next) {
-    if (req.body.email === user.email && req.body.password === user.password) {
-        const token = jwt.sign({ email: user.email }, config.jwtSecret);
+module.exports = {
+    login: async (req, res, next) => {
+        //sample user
+        const user = {
+            email: 'admin',
+            password: '123456'
+        };
 
-        return res.json({
-            success: true,
-            message: "Logged in"
-            token: token,
-            email: user.email
-        });
-    }else{
-        return res.json({
-            success: true,
-            message: "Unauthorized"
-        });
+        if (req.body.email === user.email && req.body.password === user.password) {
+            return res.json({
+                success: true,
+                message: "Logged in"
+            });
+        }else{
+            return res.json({
+                success: false,
+                message: "Unauthorized"
+            });
+        }
+    },
+    register: async (req, res, next) => {
+
+        try{
+
+            let newUser = new UserSchema({
+                email: req.body.email,
+                password: req.body.password
+            })
+
+            let user = await mongooseUtils.save(newUser);
+
+            return res.json({
+                success: true,
+                message: "Registered.",
+                user: user
+            });
+        }catch(e){
+            return res.json({
+                success: false,
+                message: e.message
+            });
+        }
     }
 }
-
-export default { login };

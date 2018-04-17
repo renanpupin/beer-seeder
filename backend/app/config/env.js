@@ -2,10 +2,10 @@
 const env = require('dotenv').config();
 
 const config = {
-  env: env.NODE_ENV,
-  port: env.PORT,
-  jwtSecret: env.JWT_SECRET,
-  mongoUrl: env.MONGODB_URL
+  env: process.env.NODE_ENV,	//get from system ENV variables
+  port: process.env.PORT,	//get from system ENV variables
+  db: process.env.MONGODB_URL,	//get from .env
+  jwtSecret: process.env.JWT_SECRET,	//get from .env
 };
 
-export default config;
+module.exports = config;

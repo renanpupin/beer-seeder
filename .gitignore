@@ -3,7 +3,8 @@
 /backend/node_modules
 
 # secrets
-.env
+.env.production
 
 # generated files
 npm-debug.log
+.idea

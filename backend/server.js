@@ -1,37 +1,49 @@
 //libs
-import http from 'http';
-import express from 'express';
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
+const http = require("http");
+const express = require("express");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
 
 //configs
-import config from './env';
+const config = require('./app/config/env');
 
-//uses
-import initializeDb from './db';
-import middleware from './middleware';
-import api from './api';
+const dbUtils = require('./app/utils/db');
+const apiRoutes = require('./app/routes/index');
 
 let app = express();
 app.server = http.createServer(app);
+const router = express.Router();
 
 // logger
 app.use(morgan('dev'));
 
 
 app.use(bodyParser.json());
-
-// connect to db
-initializeDb( db => {
-	// internal middleware
-	app.use(middleware({ config, db }));
-
-	// api router
-	app.use('/api', api({ config, db }));
-
-	app.server.listen(process.env.PORT || config.port, () => {
-		console.log(`Started on port ${config.port}`);
-	});
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, PUT, DELETE');
+    res.setHeader("Access-Control-Allow-Headers", 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+    next();
 });
 
-export default app;
+try{
+	// connect to db
+	dbUtils.initializeDb(config.db);
+
+	// --------------- ROUTES ---------------
+	app.get('/', (req, res) => {
+		res.json({success: true, message: "Beer Seeder!"});
+	});
+
+	app.use('/api', apiRoutes);
+	// --------------------------------------
+
+	app.server.listen((process.env.PORT || config.port || 3000), () => {
+		console.log(`Started on port ${process.env.PORT || config.port || 3000}`);
+	});
+}catch(e){
+	console.log("Error while creating the server",e);
+}
+
+module.exports = app;
