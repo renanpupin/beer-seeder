@@ -1,27 +1,18 @@
 ![Beer Seeder](beer_seeder.png?raw=true)
 
-A React and Node.js best practices seeder for beer lovers.
+Node.js best practices seeder for beer lovers.
 
-# Frontend
-[View Docs](https://github.com/renanpupin/beer-seeder/tree/master/frontend)
+## Features
 
-# Backend
-[View Docs](https://github.com/renanpupin/beer-seeder/tree/master/backend)
+### Automated tests
+### Mongoose
+### Functional Programming
+### Deploy to Heroku
 
 ## Installation
 
-### Frontend
-
 ```sh
-$ cd /beer-seeder/frontend
-$ npm install
-$ npm start
-```
-
-### Backend
-
-```sh
-$ cd /beer-seeder/backend
+$ cd beer-seeder
 $ npm install
 $ node server.js
 ```
