@@ -1,11 +1,9 @@
 language: node_js
 node_js:
-  - "6.11.4"
-  - "7.6"
   - "8.6.0"
+  - "10.1.0"
 services:
   - mongodb
 cache:
   directories:
-  - /frontend/node_modules
-  - /backend/node_modules
+  - node_modules

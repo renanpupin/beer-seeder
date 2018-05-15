@@ -4,10 +4,10 @@ Node.js best practices seeder for beer lovers.
 
 ## Features
 
-### Automated tests
-### Mongoose
-### Functional Programming
-### Deploy to Heroku
+Automated tests
+Mongoose
+Functional Programming
+Deploy to Heroku
 
 ## Installation
 
