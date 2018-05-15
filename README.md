@@ -13,6 +13,6 @@ Node.js best practices seeder for beer lovers.
 
 ```sh
 $ cd beer-seeder
-$ npm install
+$ yarn install
 $ node server.js
 ```
