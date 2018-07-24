@@ -14,12 +14,16 @@
     "dotenv": "^5.0.1",
     "express": "~4.11.1",
     "mongoose": "^4.0.3",
-    "morgan": "~1.5.1"
+    "morgan": "~1.5.1",
+    "redis": "^2.8.0",
+    "socket.io": "^2.1.1",
+    "socket.io-emitter": "^3.1.1",
+    "socket.io-redis": "^5.2.0"
   },
   "devDependencies": {
-    "mocha": "^5.1.0",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "mocha": "^5.1.0",
     "nodemon": "^1.12.1"
   }
 }
